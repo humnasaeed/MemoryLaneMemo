@@ -52,7 +52,7 @@ ul {
   margin-top: 10px;
   list-style-type: disc; /* Bullet points */
   color: #35240A; /* Dark Brown color */
-  padding-left: 8px; /* Add 8px padding to the left of the list */
+  padding-left: 0px; /* Add 8px padding to the left of the list */
 
 }
 
@@ -152,7 +152,7 @@ ul li::before {
   background-size: cover;
   background-position: center;
   top:12px;
-  left:8px; 
+  left:6px; 
 }
 
 ul li.checked {

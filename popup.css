@@ -7,8 +7,7 @@ body {
   background-size: cover;
   background-attachment: scroll;
   background-repeat: repeat-y; /* This will make the background image repeat only vertically */
-  background-position: center top; /* Adjust the percentage to achieve the desired overlap */
-  /*background-position: center top; /* Adjust the starting position as needed */
+  background-position: center top;
   font-family: 'Comic Sans MS', cursive;
 }
 
@@ -17,6 +16,7 @@ body {
   font-family: 'Dancing Script', cursive;
   color: #8B4513; /* Brown color */
   font-size: 32px; /* Adjust the font size as needed */
+  margin-top: -7px;
 }
 
 #character-container {
@@ -49,8 +49,10 @@ ul {
 
 li {
   margin-bottom: 5px;
-  font-size: 16px;
+  margin-left: 45px;
+  font-size: 24px;
   color: #35240A; /* Dark Brown color */
-  font-family: 'American Typewriter', 'Courier New', monospace; /* American Typewriter font or fallback to Courier New or monospace */
+  /*font-family: 'American Typewriter', 'Courier New', monospace; /* American Typewriter font or fallback to Courier New or monospace */
+  font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
   font-weight: 400; /* Adjust the font weight as needed (less thick) */
 }

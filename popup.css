@@ -1,10 +1,23 @@
+
 body {
   width: 300px;
   height: 300px;
   margin: 0;
   padding: 10px;
-  background-color: #ffd700;
+  background-image: url('your-background-image.jpg');
+  background-size: cover;
+  background-attachment: scroll;
+  background-repeat: repeat-y; /* This will make the background image repeat only vertically */
+  background-position: center top;
   font-family: 'Comic Sans MS', cursive;
+}
+
+#title {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  color: #8B4513; /* Brown color */
+  font-size: 32px; /* Adjust the font size as needed */
+  margin-top: -7px;
 }
 
 #character-container {
@@ -12,32 +25,45 @@ body {
 }
 
 #dancing-character {
-  width: 100px; /* Adjust the width as needed */
+  width: 150px; /* Adjust the width as needed */
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Increase the margin as needed */
 }
 
 textarea {
-  width: 100%;
+  width: calc(100% - 20px);
   height: 60%;
   resize: none;
-  border: 2px dotted #000080;
+  border: 2px solid #8B4513; /* Brown border */
   background-color: #ffffe0;
   font-size: 14px;
   padding: 10px;
 }
 
+
+
+  
+
 ul {
   padding: 0;
   margin-top: 10px;
-  list-style-type: none;
+  list-style-type: disc; /* Bullet points */
+  color: #35240A; /* Dark Brown color */
+  padding-left: 8px; /* Add 8px padding to the left of the list */
+
 }
 
 li {
   margin-bottom: 5px;
-  font-size: 16px;
-  color: #ff1493;
+  margin-left: 45px;
+  font-size: 24px;
+  color: #35240A; /* Dark Brown color */
+  /*font-family: 'American Typewriter', 'Courier New', monospace; /* American Typewriter font or fallback to Courier New or monospace */
+  font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
+  font-weight: 400; /* Adjust the font weight as needed (less thick) */
 }
+
+
 
 
 
@@ -46,7 +72,7 @@ li {
   height:60%; 
   /*padding: 30px;*/
   background: transparent;
-  border: 2px solid #e6b7eca1;
+  border: none;
   border-radius: 10px;
   backdrop-filter: blur(15px); 
  
@@ -58,7 +84,7 @@ li {
 .input-container {
   display: flex;
   justify-content: space-between; 
-  margin-bottom: 25px; 
+  margin-bottom: 10px; 
 }
 
 
@@ -70,8 +96,10 @@ li {
   border: 2px solid #000000a1;
   border-radius: 30px; 
   color:#201f1f; 
-  font-size: 16px; 
+  font-size: 14px; 
   margin-right: 10px;
+  
+  
 }
 
 .todo-input::placeholder {
@@ -89,4 +117,86 @@ li {
   width: 40px; 
   height: 40px;
 
+}
+
+ul li {
+  list-style: none; 
+  font-size: 17px; 
+  padding: 10px 8px 0px 50px; 
+  user-select: none; 
+  cursor: pointer;
+  position: relative;
+
+
+}
+
+ul li::before {
+  content: '';
+  position: absolute; 
+  height: 20px; 
+  width: 20px; 
+  border-radius: 50%;
+  background-image: url(unchecked.png);
+  background-size: cover;
+  background-position: center;
+  top:12px;
+  left:8px; 
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through; 
+}
+
+ul li.checked::before{
+  background-image: url(checked.png);
+}
+
+ul li span{
+  position: absolute; 
+  right: 0; 
+  top: 5px; 
+  width: 40px; 
+  height: 40px; 
+  font-size: 22px;
+  color: #555;
+  line-height: 40px; 
+  text-align: center; 
+  border-radius: 50%; 
+
+}
+
+ul li span:hover {
+  background: #edeef0; 
+}
+
+
+.todo-container {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  right: 5px; /* Adjust the right offset as needed */
+  top: 50%; /* Center the button vertically */
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: rgba(50, 48, 50, 0.316);
+
+  font-size: 20px; /* Adjust the font size as needed */
+  border-radius: 50%;
+  padding: 5px; 
+  transition: color 0.3s; /* Add a smooth transition effect */
+}
+
+.delete-button:hover {
+  background: #edeef0; 
+  border-radius: 50%;
+  width: 24px;
+  height:24px;
+  display: flex; 
+  align-items: center; 
+  justify-content:center; 
+ 
+ /* Change the color on hover as needed */
 }

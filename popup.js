@@ -1,76 +1,159 @@
-// popup.js
+document.addEventListener('DOMContentLoaded', function () {
+  const textarea = document.getElementById('notebook');
+  const listContainer = document.createElement('ul');
+  const dancingCharacter = document.getElementById('dancing-character');
 
-// Array of pastel colors
-var pastelColors = [
-  '#FFD1DC', // Pastel Pink
-  '#87CEFA', // Pastel Blue
-  '#FFD700', // Pastel Yellow
-  '#98FB98', // Pastel Green
-  '#FFA07A', // Pastel Salmon
-  '#DDA0DD', // Pastel Purple
-  '#00FA9A'  // Pastel Mint
-];
+  const totalImages = 7;
 
-// Array of image filenames
-var imageFilenames = [
-  'image1.gif',
-  'image2.gif',
-  'image3.gif',
-  'image4.gif',
-  'image5.gif',
-  'image6.gif',
-  'image7.gif'
-];
+  function changeDancingCharacter() {
+    const randomIndex = Math.floor(Math.random() * totalImages) + 1;
+    dancingCharacter.src = `images/image${randomIndex}.gif`;
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Get the body element
-  var bodyElement = document.body;
+  changeDancingCharacter();
 
-  // Get a random index from the pastelColors array
-  var randomColorIndex = Math.floor(Math.random() * pastelColors.length);
+  // Load previously saved entries
+  chrome.storage.sync.get(['noteEntries'], function (result) {
+    if (result.noteEntries) {
+      result.noteEntries.forEach(entry => {
+        addEntryToList(entry);
+      });
+    }
+  });
 
-  // Set the background color of the body element
-  bodyElement.style.backgroundColor = pastelColors[randomColorIndex];
+  // Save entry on Enter key press
+  textarea.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      const entryText = textarea.value.trim();
+      if (entryText !== '') {
+        addEntryToList(entryText);
+        saveEntries();
+        textarea.value = '';
+      }
+    }
+  });
 
-  // Get the dancing character element
-  var dancingCharacter = document.getElementById('dancing-character');
+  function addEntryToList(entryText) {
+    const listItem = document.createElement('li');
+    listItem.textContent = entryText;
+    listContainer.appendChild(listItem);
+  }
 
-  // Get a random index for the image filenames array
-  var randomImageIndex = Math.floor(Math.random() * imageFilenames.length);
+  function saveEntries() {
+    const entries = Array.from(listContainer.children).map(item => item.textContent);
+    chrome.storage.sync.set({ 'noteEntries': entries });
+  }
 
-  // Set the src attribute of the dancing character element
-  dancingCharacter.src = imageFilenames[randomImageIndex];
+  function showAlert() {
+    const entries = Array.from(listContainer.children).map(item => item.textContent);
+    if (entries.length > 0) {
+      alert('To-Do List:\n' + entries.join('\n'));
+    }
+  }
+
+  // Set up recurring alert every 20 seconds
+  setInterval(showAlert, 20 * 1000);
+
+  // Initial setup - change dancing character image on extension load
+  changeDancingCharacter();
+
+  document.body.appendChild(listContainer);
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const addButton = document.querySelector('.add-button');
+  const todoInput = document.querySelector('.todo-input');
+  const listContainer = document.getElementById('list-container');
 
-function setPopupTiming() {
-  // Add your timing logic here if needed
-  // For example, you can set a timeout to change the background color and image after a certain time
-  // setTimeout(changeColorsAndImage, 5000); // Change colors and image after 5 seconds
-}
+  // Load todo list from storage
+  chrome.storage.sync.get(['todoList'], function (result) {
+    if (result.todoList) {
+      result.todoList.forEach(todo => {
+        addTodoToList(todo);
+      });
+    }
+  });
 
-// Function to change the background color and image
-function changeColorsAndImage() {
-  var bodyElement = document.body;
-  var dancingCharacter = document.getElementById('dancing-character');
+  addButton.addEventListener('click', function () {
+    addTodo();
+  });
 
-  // Get a random index from the pastelColors array
-  var randomColorIndex = Math.floor(Math.random() * pastelColors.length);
+  todoInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      addTodo();
+    }
+  });
 
-  // Set the background color of the body element
-  bodyElement.style.backgroundColor = pastelColors[randomColorIndex];
+  function addTodo() {
+    const todoText = todoInput.value.trim();
+    if (todoText !== '') {
+      // Create a container div for the todo item
+      const todoContainer = document.createElement('div');
+      todoContainer.className = 'todo-container';
 
-  // Get a random index for the image filenames array
-  var randomImageIndex = Math.floor(Math.random() * imageFilenames.length);
+      // Create a list item for the todo text
+      const li = document.createElement('li');
+      li.textContent = todoText;
+      li.addEventListener('click', toggleTodo);
 
-  // Set the src attribute of the dancing character element
-  dancingCharacter.src = imageFilenames[randomImageIndex];
-}
+      // Create delete button
+      const deleteButton = document.createElement('span');
+      deleteButton.innerHTML = '&#10006;';
+      deleteButton.className = 'delete-button';
+      deleteButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        deleteTodo(todoContainer);
+      });
 
+      // Append the delete button to the todo container
+      todoContainer.appendChild(li);
+      todoContainer.appendChild(deleteButton);
 
-const input = document.querySelector("input");
-const addButton = document.querySelector(".add-button"); 
-const todoHtml = document.querySelector(".todos"); 
-const emptyImage = document.querySelector(".empty-image");
-let todosJson = JSON.parse(localStorage.getItem("toodos")) || []; 
+      // Append the todo container to the list
+      listContainer.appendChild(todoContainer);
+      todoInput.value = '';
 
+      // Save todo list to storage
+      saveTodoList();
+    } else {
+      alert("Can not leave empty... :(");
+    }
+  }
 
+  function toggleTodo() {
+    this.classList.toggle('checked');
+    saveTodoList();
+  }
+
+  function deleteTodo(todoContainer) {
+    todoContainer.remove();
+    saveTodoList();
+  }
+
+  function saveTodoList() {
+    const todos = Array.from(listContainer.getElementsByClassName('todo-container')).map(item => item.firstChild.textContent);
+    chrome.storage.sync.set({ 'todoList': todos });
+  }
+
+  function addTodoToList(todoText) {
+    const todoContainer = document.createElement('div');
+    todoContainer.className = 'todo-container';
+
+    const li = document.createElement('li');
+    li.textContent = todoText;
+    li.addEventListener('click', toggleTodo);
+
+    const deleteButton = document.createElement('span');
+    deleteButton.innerHTML = '&#10006;';
+    deleteButton.className = 'delete-button';
+    deleteButton.addEventListener('click', function (event) {
+      event.stopPropagation();
+      deleteTodo(todoContainer);
+    });
+
+    todoContainer.appendChild(li);
+    todoContainer.appendChild(deleteButton);
+
+    listContainer.appendChild(todoContainer);
+  }
+});

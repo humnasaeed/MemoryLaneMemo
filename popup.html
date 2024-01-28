@@ -14,14 +14,19 @@
 
   <link rel="stylesheet" type="text/css" href="popup.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Honk&family=Poppins:wght@300;400;600&display=swap');
+  </style>
 </head>
 
 
 <body>
+  <h1 id="title">Memory Lane Memo Pad</h1>
   <div id="character-container">
-    <img id="dancing-character" src="dancing-character.gif" alt="Dancing Character">
+    <img id="dancing-character" src="images/dancing-character.gif" alt="Dancing Character">
   </div>
 
 
@@ -41,6 +46,14 @@
 
       </div>
 
+      <ul id="list-container">
+        
+       <!----- <li class="checked">Task 1</li>
+        <li>Task 1</li>
+        <li>Task 1</li>--->
+
+      </ul>
+
       <div class="todos-container">
         <ul class="todos"></ul>
         <!----<img class="empty-image" src="./del.png">-->
@@ -52,7 +65,7 @@
 
 
 
-  <textarea id="notebook" placeholder="Type here..."></textarea>
+  <!----<textarea id="notebook" placeholder="Type here..."></textarea>-->
 
   <div>
     <label for="timingInput">Popup Timing (hours): </label>

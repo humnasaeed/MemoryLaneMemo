@@ -65,3 +65,12 @@ function changeColorsAndImage() {
   // Set the src attribute of the dancing character element
   dancingCharacter.src = imageFilenames[randomImageIndex];
 }
+
+
+const input = document.querySelector("input");
+const addButton = document.querySelector(".add-button"); 
+const todoHtml = document.querySelector(".todos"); 
+const emptyImage = document.querySelector(".empty-image");
+let todosJson = JSON.parse(localStorage.getItem("toodos")) || []; 
+
+

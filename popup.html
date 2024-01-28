@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <div id="character-container">
+    <img id="dancing-character" src="dancing-character.gif" alt="Dancing Character">
+  </div>
+  <textarea id="notebook" placeholder="Type here..."></textarea>
+
+  <div>
+    <label for="timingInput">Popup Timing (hours): </label>
+    <input type="number" id="timingInput" min="1" value="1">
+    <button onclick="setPopupTiming()">Set Timing</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Notebook Extension",
+  "version": "1.0",
+  "description": "A simple notebook extension",
+  "icons": {
+    "48": "icon.png"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"]
+}

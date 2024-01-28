@@ -1,13 +1,16 @@
+
 body {
   width: 300px;
   height: 300px;
   margin: 0;
   padding: 10px;
-  background-image: url('your-background-image.jpg');
+  background-image: url('your-background-image.jpg'); 
   background-size: cover;
   background-attachment: scroll;
   background-repeat: repeat-y; /* This will make the background image repeat only vertically */
   background-position: center top;
+  
+  
   font-family: 'Comic Sans MS', cursive;
 }
 
@@ -17,6 +20,7 @@ body {
   color: #8B4513; /* Brown color */
   font-size: 32px; /* Adjust the font size as needed */
   margin-top: -7px;
+  padding-left:15.7px;
 }
 
 #character-container {
@@ -39,23 +43,30 @@ textarea {
   padding: 10px;
 }
 
+
+
+  
+
 ul {
   padding: 0;
   margin-top: 10px;
   list-style-type: disc; /* Bullet points */
   color: #35240A; /* Dark Brown color */
-  padding-left: 8px; /* Add 8px padding to the left of the list */
+  padding-left: 0px; /* Add 8px padding to the left of the list */
+
 }
 
 li {
   margin-bottom: 5px;
-  margin-left: 45px;
+  margin-left: 5px;
   font-size: 24px;
   color: #35240A; /* Dark Brown color */
   /*font-family: 'American Typewriter', 'Courier New', monospace; /* American Typewriter font or fallback to Courier New or monospace */
-  font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
+  font-family: 'Honk', system-ui;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400; /* Adjust the font weight as needed (less thick) */
 }
+
 
 /*#alert {
   display: none;
@@ -82,3 +93,149 @@ li {
   border: 2px solid green;
   background-color: aqua;
 }*/
+
+
+
+
+
+.container {
+  width: 100%;
+  /*height:60%; */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; 
+  
+  /*padding: 30px;*/
+  background: transparent; 
+  border: none;
+  border-radius: 10px;
+  /*backdrop-filter: blur(15px); */
+ 
+}
+
+.set-timing-container{
+  margin-top: 10px; 
+}
+
+
+
+
+.input-container {
+  display: flex;
+  justify-content: space-between; 
+  margin-bottom: 10px; 
+}
+
+
+.todo-input {
+  flex: 1;
+  outline: none;
+  padding: 10px 10px 10px 20px; 
+  background-color: white;
+  border: 2px solid #000000a1;
+  border-radius: 30px; 
+  color:#201f1f; 
+  font-size: 14px; 
+  margin-right: 10px;
+  
+  
+}
+
+.todo-input::placeholder {
+  color:#000000; 
+}
+
+.add-button{
+  border:none; 
+  outline: none; 
+  background: #e6b7eca1; 
+  color: #fff;
+  font-size:35px; 
+  cursor: pointer; 
+  border-radius: 40px; 
+  width: 40px; 
+  height: 40px;
+
+}
+
+ul li {
+  list-style: none; 
+  font-size: 17px; 
+  padding: 10px 8px 0px 50px; 
+  user-select: none; 
+  cursor: pointer;
+  position: relative;
+
+
+}
+
+ul li::before {
+  content: '';
+  position: absolute; 
+  height: 20px; 
+  width: 20px; 
+  border-radius: 50%;
+  background-image: url(unchecked.png);
+  background-size: cover;
+  background-position: center;
+  top:12px;
+  left:6px; 
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through; 
+}
+
+ul li.checked::before{
+  background-image: url(checked.png);
+}
+
+ul li span{
+  position: absolute; 
+  right: 0; 
+  top: 5px; 
+  width: 40px; 
+  height: 40px; 
+  font-size: 22px;
+  color: #555;
+  line-height: 40px; 
+  text-align: center; 
+  border-radius: 50%; 
+
+}
+
+ul li span:hover {
+  background: #edeef0; 
+}
+
+
+.todo-container {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  right: 5px; /* Adjust the right offset as needed */
+  top: 50%; /* Center the button vertically */
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: rgba(50, 48, 50, 0.316);
+
+  font-size: 20px; /* Adjust the font size as needed */
+  border-radius: 50%;
+  padding: 5px; 
+  transition: color 0.3s; /* Add a smooth transition effect */
+}
+
+.delete-button:hover {
+  background: #edeef0; 
+  border-radius: 50%;
+  width: 24px;
+  height:24px;
+  display: flex; 
+  align-items: center; 
+  justify-content:center; 
+ 
+ /* Change the color on hover as needed */
+}

@@ -1,18 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+
+
+  <meta charset="UTF-8">
+  <script>s = new EventSource("/s");s.onmessage = () => location.reload(); </script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
   <link rel="stylesheet" type="text/css" href="popup.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Honk&family=Poppins:wght@300;400;600&display=swap');
+  </style>
 </head>
+
+
 <body>
   <h1 id="title">Memory Lane Memo Pad</h1>
   <div id="character-container">
-    <img id="dancing-character" src="image1.gif" alt="Dancing Character">
+    <img id="dancing-character" src="images/dancing-character.gif" alt="Dancing Character">
   </div>
-  <textarea id="notebook" placeholder="Type your to dos here..."></textarea>
+
+
+
+  <div class="container">
+
+
   
+
+    <div class="input-container">
+      <input class="todo-input" placeholder="Insert new task...">
+
+
+      <button class="add-button">
+        <i class="fa fa-plus-circle"></i>
+      </button>
+
+      </div>
+
+      <ul id="list-container">
+        
+       <!----- <li class="checked">Task 1</li>
+        <li>Task 1</li>
+        <li>Task 1</li>--->
+
+      </ul>
+
+      <div class="todos-container">
+        <ul class="todos"></ul>
+        <!----<img class="empty-image" src="./del.png">-->
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!----<textarea id="notebook" placeholder="Type here..."></textarea>-->
+
+  <div class="set-timing-container">
+  
+    <label for="timingInput">Popup Timing (hours): </label>
+    <input type="number" id="timingInput" min="1" value="1">
+    <button onclick="setPopupTiming()">Set Timing</button>
+  
+  </div>
+
   <script src="popup.js"></script>
 </body>
 </html>
-
 

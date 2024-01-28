@@ -4,11 +4,13 @@ body {
   height: 300px;
   margin: 0;
   padding: 10px;
-  background-image: url('your-background-image.jpg');
+  background-image: url('your-background-image.jpg'); 
   background-size: cover;
   background-attachment: scroll;
   background-repeat: repeat-y; /* This will make the background image repeat only vertically */
   background-position: center top;
+  
+  
   font-family: 'Comic Sans MS', cursive;
 }
 
@@ -55,11 +57,12 @@ ul {
 
 li {
   margin-bottom: 5px;
-  margin-left: 45px;
+  margin-left: 5px;
   font-size: 24px;
   color: #35240A; /* Dark Brown color */
   /*font-family: 'American Typewriter', 'Courier New', monospace; /* American Typewriter font or fallback to Courier New or monospace */
-  font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
+  font-family: 'Honk', system-ui;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400; /* Adjust the font weight as needed (less thick) */
 }
 
@@ -71,10 +74,10 @@ li {
   width: 100%;
   height:60%; 
   /*padding: 30px;*/
-  background: transparent;
+  background: transparent; 
   border: none;
   border-radius: 10px;
-  backdrop-filter: blur(15px); 
+  /*backdrop-filter: blur(15px); */
  
 }
 

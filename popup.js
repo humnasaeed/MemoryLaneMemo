@@ -1,76 +1,62 @@
-// popup.js
+document.addEventListener('DOMContentLoaded', function () {
+  const textarea = document.getElementById('notebook');
+  const listContainer = document.createElement('ul');
+  const dancingCharacter = document.getElementById('dancing-character');
 
-// Array of pastel colors
-var pastelColors = [
-  '#FFD1DC', // Pastel Pink
-  '#87CEFA', // Pastel Blue
-  '#FFD700', // Pastel Yellow
-  '#98FB98', // Pastel Green
-  '#FFA07A', // Pastel Salmon
-  '#DDA0DD', // Pastel Purple
-  '#00FA9A'  // Pastel Mint
-];
+  const totalImages = 7;
 
-// Array of image filenames
-var imageFilenames = [
-  'image1.gif',
-  'image2.gif',
-  'image3.gif',
-  'image4.gif',
-  'image5.gif',
-  'image6.gif',
-  'image7.gif'
-];
+  function changeDancingCharacter() {
+    const randomIndex = Math.floor(Math.random() * totalImages) + 1;
+    dancingCharacter.src = `image${randomIndex}.gif`;
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Get the body element
-  var bodyElement = document.body;
+  // Load previously saved entries
+  chrome.storage.sync.get(['noteEntries'], function (result) {
+    if (result.noteEntries) {
+      result.noteEntries.forEach(entry => {
+        addEntryToList(entry);
+      });
+    }
+  });
 
-  // Get a random index from the pastelColors array
-  var randomColorIndex = Math.floor(Math.random() * pastelColors.length);
+  // Save entry on Enter key press
+  textarea.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      const entryText = textarea.value.trim();
+      if (entryText !== '') {
+        addEntryToList(entryText);
+        saveEntries();
+        textarea.value = '';
+      }
+    }
+  });
 
-  // Set the background color of the body element
-  bodyElement.style.backgroundColor = pastelColors[randomColorIndex];
+  function addEntryToList(entryText) {
+    const listItem = document.createElement('li');
+    listItem.textContent = entryText;
+    listContainer.appendChild(listItem);
+  }
 
-  // Get the dancing character element
-  var dancingCharacter = document.getElementById('dancing-character');
+  function saveEntries() {
+    const entries = Array.from(listContainer.children).map(item => item.textContent);
+    chrome.storage.sync.set({ 'noteEntries': entries });
+  }
 
-  // Get a random index for the image filenames array
-  var randomImageIndex = Math.floor(Math.random() * imageFilenames.length);
+  function showAlert() {
+    const entries = Array.from(listContainer.children).map(item => item.textContent);
+    if (entries.length > 0) {
+      alert('To-Do List:\n' + entries.join('\n'));
+    }
+  }
 
-  // Set the src attribute of the dancing character element
-  dancingCharacter.src = imageFilenames[randomImageIndex];
+  // Set up recurring alert every 20 seconds
+  setInterval(showAlert, 20 * 1000);
+
+  // Initial setup - change dancing character image on extension load
+  changeDancingCharacter();
+
+  document.body.appendChild(listContainer);
 });
-
-function setPopupTiming() {
-  // Add your timing logic here if needed
-  // For example, you can set a timeout to change the background color and image after a certain time
-  // setTimeout(changeColorsAndImage, 5000); // Change colors and image after 5 seconds
-}
-
-// Function to change the background color and image
-function changeColorsAndImage() {
-  var bodyElement = document.body;
-  var dancingCharacter = document.getElementById('dancing-character');
-
-  // Get a random index from the pastelColors array
-  var randomColorIndex = Math.floor(Math.random() * pastelColors.length);
-
-  // Set the background color of the body element
-  bodyElement.style.backgroundColor = pastelColors[randomColorIndex];
-
-  // Get a random index for the image filenames array
-  var randomImageIndex = Math.floor(Math.random() * imageFilenames.length);
-
-  // Set the src attribute of the dancing character element
-  dancingCharacter.src = imageFilenames[randomImageIndex];
-}
-
-
-const input = document.querySelector("input");
-const addButton = document.querySelector(".add-button"); 
-const todoHtml = document.querySelector(".todos"); 
-const emptyImage = document.querySelector(".empty-image");
-let todosJson = JSON.parse(localStorage.getItem("toodos")) || []; 
 
 

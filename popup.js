@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const listContainer = document.createElement('ul');
   const dancingCharacter = document.getElementById('dancing-character');
 
-  const totalImages = 11;
+  const totalImages = 12;
 
   function changeDancingCharacter() {
     const randomIndex = Math.floor(Math.random() * totalImages) + 1;

@@ -3,7 +3,12 @@ body {
   height: 300px;
   margin: 0;
   padding: 10px;
-  background-color: #d2b48c; /* Pastel Brown */
+  background-image: url('your-background-image.jpg');
+  background-size: cover;
+  background-attachment: scroll;
+  background-repeat: repeat-y; /* This will make the background image repeat only vertically */
+  background-position: center top; /* Adjust the percentage to achieve the desired overlap */
+  /*background-position: center top; /* Adjust the starting position as needed */
   font-family: 'Comic Sans MS', cursive;
 }
 

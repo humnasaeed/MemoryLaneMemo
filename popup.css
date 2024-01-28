@@ -56,3 +56,29 @@ li {
   font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
   font-weight: 400; /* Adjust the font weight as needed (less thick) */
 }
+
+/*#alert {
+  display: none;
+  background-color: lightgrey;
+  border: 1px solid green;
+  position: fixed;
+  width: 250px;
+  left: 45%;
+  top: 2%;
+  padding: 6px 8px 8px;
+  text-align: center;
+}
+
+#alert img {
+  width: 10rem;
+  height: 10rem;
+}
+
+#alert button {
+  border-radius: 12px;
+  height: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  border: 2px solid green;
+  background-color: aqua;
+}*/

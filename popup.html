@@ -1,66 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-
-  <meta charset="UTF-8">
-  <script>s = new EventSource("/s");s.onmessage = () => location.reload(); </script>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-
-
   <link rel="stylesheet" type="text/css" href="popup.css">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
 </head>
-
-
 <body>
+  <h1 id="title">Memory Lane Memo Pad</h1>
   <div id="character-container">
-    <img id="dancing-character" src="dancing-character.gif" alt="Dancing Character">
+    <img id="dancing-character" src="image1.gif" alt="Dancing Character">
   </div>
-
-
-
-  <div class="container">
-
-
-  
-
-    <div class="input-container">
-      <input class="todo-input" placeholder="Insert new task...">
-
-
-      <button class="add-button">
-        <i class="fa fa-plus-circle"></i>
-      </button>
-
-      </div>
-
-      <div class="todos-container">
-        <ul class="todos"></ul>
-        <!----<img class="empty-image" src="./del.png">-->
-      </div>
-
-    </div>
-
-  </div>
-
-
-
   <textarea id="notebook" placeholder="Type here..."></textarea>
-
-  <div>
-    <label for="timingInput">Popup Timing (hours): </label>
-    <input type="number" id="timingInput" min="1" value="1">
-    <button onclick="setPopupTiming()">Set Timing</button>
-  </div>
-
   <script src="popup.js"></script>
 </body>
 </html>
+
 

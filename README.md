@@ -26,8 +26,9 @@ We started our project by talking to mentors, researching, and setting up the re
 ## Accomplishments that we're proud of
 
 We are proud of successfully crafting a functional to-do list Chrome extension that seamlessly captures the essence of nostalgia. Despite encountering obstacles along the way, we remained resilient and managed to deliver our project within the allotted time frame.
-**
-What we learned**
+
+## **What we learned**
+
 First and foremost, we learned that we need to start with something simpler like a react website before trying to get a functional to-do list and an extension as well. With the support of our amazing mentors, we learned how to use GitHub more efficiently and we explored the design process bringing a fun idea we came up with into a final product.
 
 ## What's next for MemoryLaneMemo
@@ -37,4 +38,5 @@ MemoryLane Memo has a lot of potential with its nostalgic and user-focused desig
 We want to add an AI chatbot so you can ask for recommendations and advice straight from the pop-up.
 We also want to integrate it with Google Calendar so that your tasks can be scheduled and time-blocked more easily.
 We want to add a gif API for more variety in the gifs.
+
 References: https://thriveteen.com/teen-mental-health-statistics/#:~:text=64%25%20of%20teens%20reported%20feeling,having%20received%20mental%20health%20treatment
